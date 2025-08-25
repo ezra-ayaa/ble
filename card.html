@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi bebi na laging nangaaway</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #f9f3f3, #ffebee);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 400px;
+            margin: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+        h1 {
+            color: #ff6f61;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(255, 111, 97, 0.5);
+        }
+        .heart {
+            font-size: 80px;
+            color: #ff6f61;
+            margin: 20px 0;
+        }
+        .message {
+            font-size: 1.2em;
+            margin: 20px 0;
+            line-height: 1.5;
+            display: none; /* Hidden initially */
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 1em;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+            animation: pulse 1.5s infinite;
+            display: none; /* Hidden initially */
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        button:hover {
+            background-color: #ff4c3b;
+            transform: scale(1.05);
+        }
+        #specialMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff4c3b;
+            background-color: #ffe4e1;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .falling-heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            color: #ff6f61;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateX(0);
+                top: -50px;
+            }
+            100% {
+                transform: translateX(20px);
+                top: 100vh;
+            }
+        }
+    </style>
+    <script>
+        function revealCard() {
+            const message = document.querySelector('.message');
+            const button = document.querySelector('button');
+            message.style.display = 'block'; // Show the message
+            button.style.display = 'block'; // Show the button
+            document.querySelector('.card').removeEventListener('click', revealCard); // Remove click event
+        }
+
+        function revealMessage() {
+            const message = document.getElementById('specialMessage');
+            message.style.display = 'block';
+            message.style.opacity = '1';
+        }
+
+        function createFallingHearts() {
+            const heartCount = 10; // Number of hearts to fall
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'falling-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall duration
+                document.body.appendChild(heart);
+
+                // Remove heart after animation ends
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+        }
+
+        // Create falling hearts every 1 second
+        setInterval(createFallingHearts, 1000);
+    </script>
+</head>
+<body>
+    <div class="card" onclick="revealCard()">
+        <h1>to my wonderful baby na feeling maangas</h1>
+        <div class="message">
+            <p>hayi babyyyy! did you know that you make even the simplest days feel special just by being there. and i want you to know that you're not just my girlfriend, you're my safe place, and my greatest blessing. i feel so lucky to have you, and i promise i'll never take you for granted. i'll always choose you, my heart belongs to you, today and always. thank you for being you, for loving me, for caring for me, and for staying by my side. i'll keep loving you in every way i know how, because you deserve nothing less than all the love i can give.</p>
+        </div>
+        <button onclick="revealMessage()">Click for a Special Surprise!</button>
+        <div id="specialMessage" style="display: none; opacity: 0;">
+            <p>you make my world brighter every day! i love youuuuu</p>
+        </div>
+        <div class="footer">
+            <p>With all my love,</p>
+            <p>your bebiii</p>
+        </div>
+    </div>
+</body>
+</html>
